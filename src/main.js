@@ -35,14 +35,26 @@ function redirectToHomePage() {
 
 function handleLogin() {
   const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
 
-  setLocalStorageItem("userInfo", { username, password });
+  setLocalStorageItem("userInfo", {
+    username,
+    email: "",
+    bio: "",
+  });
   redirectToHomePage();
 }
 
 function handleLogout() {
   removeLocalStorageItem("userInfo");
+  redirectToHomePage();
+}
+
+function handleProfile() {
+  const username = document.getElementById("username").value;
+  const email = document.getElementById("email").value;
+  const bio = document.getElementById("bio").value;
+
+  setLocalStorageItem("userInfo", { username, email, bio });
   redirectToHomePage();
 }
 
@@ -54,6 +66,10 @@ function setupEventListeners() {
 
     if (event.target.id === "login-form") {
       handleLogin();
+    }
+
+    if (event.target.id === "profile-form") {
+      handleProfile();
     }
   });
   window.addEventListener("click", (event) => {

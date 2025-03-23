@@ -1,5 +1,5 @@
 function getLocalStorageItem(key) {
-  return JSON.parse(localStorage.getItem(key));
+  return JSON.parse(localStorage.getItem(key)) || "";
 }
 
 function setLocalStorageItem(key, value) {
