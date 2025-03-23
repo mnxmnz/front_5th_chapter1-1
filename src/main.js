@@ -24,8 +24,9 @@ function renderRoute() {
   window.history.pushState({ path: currentRoute }, "", currentRoute);
 }
 
-window.addEventListener("popstate", () => {
-  renderRoute();
-});
+function setupEventListeners() {
+  window.addEventListener("popstate", renderRoute);
+  window.addEventListener("load", renderRoute);
+}
 
-window.addEventListener("load", renderRoute);
+setupEventListeners();
