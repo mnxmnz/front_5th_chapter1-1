@@ -4,16 +4,19 @@ const LoginPage = () => `
       <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">
         항해플러스
       </h1>
-      <form>
+      <form id="login-form">
         <div class="mb-4">
           <input
+            id="username"
             type="text"
-            placeholder="이메일 또는 전화번호"
+            placeholder="사용자 이름"
             class="w-full p-2 border rounded"
+            required
           />
         </div>
         <div class="mb-6">
           <input
+            id="password"
             type="password"
             placeholder="비밀번호"
             class="w-full p-2 border rounded"

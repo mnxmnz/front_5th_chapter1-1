@@ -5,6 +5,11 @@ import ProfilePage from "./components/ProfilePage.js";
 import LoginPage from "./components/LoginPage.js";
 import NotFoundPage from "./components/NotFoundPage.js";
 
+import {
+  setLocalStorageItem,
+  removeLocalStorageItem,
+} from "./utils/storage.js";
+
 const routes = {
   "/": Layout(HomePage()),
   "/login": LoginPage(),
@@ -24,9 +29,38 @@ function renderRoute() {
   window.history.pushState({ path: currentRoute }, "", currentRoute);
 }
 
+function redirectToHomePage() {
+  window.location.href = "/";
+}
+
+function handleLogin() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  setLocalStorageItem("userInfo", { username, password });
+  redirectToHomePage();
+}
+
+function handleLogout() {
+  removeLocalStorageItem("userInfo");
+  redirectToHomePage();
+}
+
 function setupEventListeners() {
   window.addEventListener("popstate", renderRoute);
   window.addEventListener("load", renderRoute);
+  window.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (event.target.id === "login-form") {
+      handleLogin();
+    }
+  });
+  window.addEventListener("click", (event) => {
+    if (event.target.id === "logout") {
+      handleLogout();
+    }
+  });
 }
 
 setupEventListeners();
