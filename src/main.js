@@ -25,7 +25,7 @@ function renderRoute() {
     return;
   }
 
-  document.body.innerHTML = Layout(NotFoundPage());
+  document.body.innerHTML = NotFoundPage();
   window.history.pushState({ path: currentRoute }, "", currentRoute);
 }
 
