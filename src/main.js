@@ -5,6 +5,7 @@ import ProfilePage from "./components/ProfilePage.js";
 import LoginPage from "./components/LoginPage.js";
 import NotFoundPage from "./components/NotFoundPage.js";
 
+import { redirectToPath } from "./utils/route.js";
 import {
   setLocalStorageItem,
   removeLocalStorageItem,
@@ -29,24 +30,20 @@ function renderRoute() {
   window.history.pushState({ path: currentRoute }, "", currentRoute);
 }
 
-function redirectToHomePage() {
-  window.location.href = "/";
-}
-
 function handleLogin() {
   const username = document.getElementById("username").value;
 
-  setLocalStorageItem("userInfo", {
+  setLocalStorageItem("user", {
     username,
     email: "",
     bio: "",
   });
-  redirectToHomePage();
+  redirectToPath("/");
 }
 
 function handleLogout() {
-  removeLocalStorageItem("userInfo");
-  redirectToHomePage();
+  removeLocalStorageItem("user");
+  redirectToPath("/");
 }
 
 function handleProfile() {
@@ -54,8 +51,8 @@ function handleProfile() {
   const email = document.getElementById("email").value;
   const bio = document.getElementById("bio").value;
 
-  setLocalStorageItem("userInfo", { username, email, bio });
-  redirectToHomePage();
+  setLocalStorageItem("user", { username, email, bio });
+  redirectToPath("/");
 }
 
 function setupEventListeners() {

@@ -1,10 +1,12 @@
-import { getLocalStorageItem } from "../utils/storage.js";
+import { auth } from "../utils/auth.js";
+import { getCurrentPath, redirectToPath } from "../utils/route.js";
 
 const ProfilePage = () => {
-  const userInfo = getLocalStorageItem("userInfo");
+  const user = auth.user;
+  const currentPath = getCurrentPath();
 
-  if (!userInfo) {
-    window.location.href = "/login";
+  if (currentPath === "/profile" && !auth.isLoggedIn) {
+    redirectToPath("/login");
   }
 
   return `
@@ -24,7 +26,7 @@ const ProfilePage = () => {
               type="text"
               id="username"
               name="username"
-              value="${userInfo.username}"
+              value="${user.username}"
               pattern="^[a-zA-Z가-힣]+$"
               class="w-full p-2 border rounded"
             />
@@ -39,7 +41,7 @@ const ProfilePage = () => {
               type="email"
               id="email"
               name="email"
-              value="${userInfo.email}"
+              value="${user.email}"
               class="w-full p-2 border rounded"
             />
           </div>
@@ -52,7 +54,7 @@ const ProfilePage = () => {
               name="bio"
               rows="4"
               class="w-full p-2 border rounded"
-            >${userInfo.bio}</textarea>
+            >${user.bio}</textarea>
           </div>
           <button
             type="submit"

@@ -1,4 +1,5 @@
-import { getLocalStorageItem } from "../utils/storage.js";
+import { auth } from "../utils/auth.js";
+import { getCurrentPath } from "../utils/route.js";
 
 const Layout = (content) => `
   <div class="bg-gray-100 min-h-screen flex justify-center">
@@ -7,8 +8,8 @@ const Layout = (content) => `
 `;
 
 const Header = () => {
-  const currentRoute = window.location.pathname;
-  const isLoggedIn = getLocalStorageItem("userInfo");
+  const isLoggedIn = auth.isLoggedIn;
+  const currentPath = getCurrentPath();
 
   return `
     <header class="bg-blue-600 text-white p-4 sticky top-0">
@@ -17,8 +18,8 @@ const Header = () => {
 
     <nav class="bg-white shadow-md p-2 sticky top-14">
       <ul class="flex justify-around">
-        <li><a href="/" class="${currentRoute === "/" ? "text-blue-600" : "text-gray-600"}">홈</a></li>
-        ${isLoggedIn ? `<li><a href="/profile" class="${currentRoute === "/profile" ? "text-blue-600" : "text-gray-600"}">프로필</a></li>` : ""}
+        <li><a href="/" class="${currentPath === "/" ? "text-blue-600" : "text-gray-600"}">홈</a></li>
+        ${isLoggedIn ? `<li><a href="/profile" class="${currentPath === "/profile" ? "text-blue-600" : "text-gray-600"}">프로필</a></li>` : ""}
         ${isLoggedIn ? `<li><a href="/" id="logout" class="text-gray-600">로그아웃</a></li>` : `<li><a href="/login" id="login" class="text-gray-600">로그인</a></li>`}
       </ul>
     </nav>
