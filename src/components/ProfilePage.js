@@ -3,6 +3,10 @@ import { getLocalStorageItem } from "../utils/storage.js";
 const ProfilePage = () => {
   const userInfo = getLocalStorageItem("userInfo");
 
+  if (!userInfo) {
+    window.location.href = "/login";
+  }
+
   return `
     <main class="p-4">
       <div class="bg-white p-8 rounded-lg shadow-md">
