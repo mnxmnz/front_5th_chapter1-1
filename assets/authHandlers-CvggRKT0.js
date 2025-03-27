@@ -1,8 +1,8 @@
-(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))n(s);new MutationObserver(s=>{for(const r of s)if(r.type==="childList")for(const i of r.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&n(i)}).observe(document,{childList:!0,subtree:!0});function o(s){const r={};return s.integrity&&(r.integrity=s.integrity),s.referrerPolicy&&(r.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?r.credentials="include":s.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function n(s){if(s.ep)return;s.ep=!0;const r=o(s);fetch(s.href,r)}})();function d(t){const e=localStorage.getItem(t);if(!e)return null;try{return JSON.parse(e)}catch(o){return console.error(o),e}}function a(t,e){return typeof e=="object"?localStorage.setItem(t,JSON.stringify(e)):localStorage.setItem(t,e)}function c(t){return localStorage.removeItem(t)}class u{constructor(){this.user=null,this.isLoggedIn=!1,this.listeners=[]}getUserInfo(){return this.user}getIsLoggedIn(){return this.isLoggedIn}setUserInfo(e){this.user=e,this.isLoggedIn=!0,this._notifyListeners()}clearUserInfo(){this.user=null,this.isLoggedIn=!1,this._notifyListeners()}subscribe(e){return this.listeners.push(e),()=>{this.listeners=this.listeners.filter(o=>o!==e)}}_notifyListeners(){const e={user:this.user,isLoggedIn:this.isLoggedIn};this.listeners.forEach(o=>o(e))}}const l=new u,b="user",f=()=>l.getIsLoggedIn(),v=()=>{const t=d(b);if(!t){l.clearUserInfo();return}return l.setUserInfo(t),t},y=t=>`
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const s of document.querySelectorAll('link[rel="modulepreload"]'))n(s);new MutationObserver(s=>{for(const r of s)if(r.type==="childList")for(const a of r.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&n(a)}).observe(document,{childList:!0,subtree:!0});function o(s){const r={};return s.integrity&&(r.integrity=s.integrity),s.referrerPolicy&&(r.referrerPolicy=s.referrerPolicy),s.crossOrigin==="use-credentials"?r.credentials="include":s.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function n(s){if(s.ep)return;s.ep=!0;const r=o(s);fetch(s.href,r)}})();function c(t){const e=localStorage.getItem(t);if(!e)return null;try{return JSON.parse(e)}catch(o){return console.error(o),e}}function d(t,e){return typeof e=="object"?localStorage.setItem(t,JSON.stringify(e)):localStorage.setItem(t,e)}function u(t){return localStorage.removeItem(t)}class b{constructor(){this.user=null,this.isLoggedIn=!1,this.listeners=[]}getUserInfo(){return this.user}getIsLoggedIn(){return this.isLoggedIn}setUserInfo(e){this.user=e,this.isLoggedIn=!0,this._notifyListeners()}clearUserInfo(){this.user=null,this.isLoggedIn=!1,this._notifyListeners()}subscribe(e){return this.listeners.push(e),()=>{this.listeners=this.listeners.filter(o=>o!==e)}}_notifyListeners(){const e={user:this.user,isLoggedIn:this.isLoggedIn};this.listeners.forEach(o=>o(e))}}const l=new b,f="user",m=()=>l.getIsLoggedIn(),w=()=>{const t=c(f);if(!t){l.clearUserInfo();return}return l.setUserInfo(t),t},I=t=>`
   <div class="bg-gray-100 min-h-screen flex justify-center">
-    <div class="max-w-md w-full">${m()} ${t} ${g()}</div>
+    <div class="max-w-md w-full">${g()} ${t} ${p()}</div>
   </div>
-`,m=()=>{const t=f(),e=o=>{if(window.location.href.includes("index.hash.html")){const s=window.location.hash;return(s?s.substring(1):"/")===o}return window.location.pathname===o};return`
+`,g=()=>{const t=m(),e=o=>{if(window.location.href.includes("index.hash.html")){const i=window.location.hash;return(i?i.substring(1):"/")===o}const s="/front_5th_chapter1-1",r=window.location.pathname;return(r.startsWith(s)?r.slice(s.length)||"/":r)===o};return`
     <header class="bg-blue-600 text-white p-4 sticky top-0">
       <h1 class="text-2xl font-bold">항해플러스</h1>
     </header>
@@ -14,11 +14,11 @@
         ${t?'<li><a href="/" id="logout" class="text-gray-600">로그아웃</a></li>':`<li><a href="/login" id="login" class="${e("/login")?"text-blue-600":"text-gray-600"}">로그인</a></li>`}
       </ul>
     </nav>
-  `},g=()=>`
+  `},p=()=>`
   <footer class="bg-gray-200 p-4 text-center">
     <p>&copy; 2024 항해플러스. All rights reserved.</p>
   </footer>
-`,w=()=>`
+`,L=()=>`
   <main class="p-4">
     <div class="mb-4 bg-white rounded-lg shadow p-4">
       <textarea
@@ -132,7 +132,7 @@
       </div>
     </div>
   </main>
-`,I=()=>{const t=l.getUserInfo();return`
+`,P=()=>{const t=l.getUserInfo();return`
     <main class="p-4">
       <div class="bg-white p-8 rounded-lg shadow-md">
         <h2 class="text-2xl font-bold text-center text-blue-600 mb-8">
@@ -188,7 +188,7 @@
         </form>
       </div>
     </main>
-  `},L=()=>`
+  `},E=()=>`
     <main class="bg-gray-100 flex items-center justify-center min-h-screen">
       <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <h1 class="text-2xl font-bold text-center text-blue-600 mb-8">
@@ -230,7 +230,7 @@
         </div>
       </div>
     </main>
-  `,P=()=>`
+  `,$=()=>`
   <main class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div
       class="bg-white p-8 rounded-lg shadow-md w-full text-center"
@@ -247,4 +247,4 @@
       </a>
     </div>
   </main>
-`;function p(t){const o={username:document.getElementById("username").value,email:"",bio:""};a("user",o),l.setUserInfo(o),t.changeRoute("/")}function h(t){c("user"),l.clearUserInfo(),t.changeRoute("/profile")}function x(t){const e=document.getElementById("username").value,o=document.getElementById("email").value,n=document.getElementById("bio").value,s={username:e,email:o,bio:n};a("user",s),l.setUserInfo(s),t.changeRoute("/profile")}function E(t){window.addEventListener("submit",e=>{e.preventDefault(),e.target.id==="login-form"&&p(t),e.target.id==="profile-form"&&x(t)}),window.addEventListener("click",e=>{e.target.id==="logout"&&h(t)})}export{P as E,y as L,w as M,I as P,l as a,L as b,v as r,E as s};
+`;function h(t){const o={username:document.getElementById("username").value,email:"",bio:""};d("user",o),l.setUserInfo(o),t.changeRoute("/")}function x(t){u("user"),l.clearUserInfo(),t.changeRoute("/profile")}function v(t){const e=document.getElementById("username").value,o=document.getElementById("email").value,n=document.getElementById("bio").value,s={username:e,email:o,bio:n};d("user",s),l.setUserInfo(s),t.changeRoute("/profile")}function S(t){window.addEventListener("submit",e=>{e.preventDefault(),e.target.id==="login-form"&&h(t),e.target.id==="profile-form"&&v(t)}),window.addEventListener("click",e=>{e.target.id==="logout"&&x(t)})}export{$ as E,I as L,L as M,P,l as a,E as b,w as r,S as s};
