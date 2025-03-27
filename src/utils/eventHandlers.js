@@ -20,7 +20,7 @@ function handleLogout(router) {
   removeLocalStorageItem("user");
   auth.clearUserInfo();
 
-  router.changeRoute("/");
+  router.changeRoute("/profile");
 }
 
 function handleProfile(router) {
@@ -33,7 +33,7 @@ function handleProfile(router) {
   setLocalStorageItem("user", userData);
   auth.setUserInfo(userData);
 
-  router.changeRoute("/");
+  router.changeRoute("/profile");
 }
 
 function setupEventListeners(router) {
