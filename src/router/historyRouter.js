@@ -7,6 +7,8 @@ class HistoryRouter {
   protectedRoutes = ["/profile"];
   guestOnlyRoutes = ["/login"];
   activeRoutePath = null;
+  basePath =
+    process.env.NODE_ENV === "production" ? "/front_5th_chapter1-1" : "";
 
   constructor(routes) {
     this.routeMapping = routes;
@@ -32,7 +34,13 @@ class HistoryRouter {
       event.target.href.startsWith(window.location.origin)
     ) {
       event.preventDefault();
-      this.changeRoute(event.target.pathname);
+
+      const pathname = event.target.pathname;
+      const path = pathname.startsWith(this.basePath)
+        ? pathname.slice(this.basePath.length) || "/"
+        : pathname;
+
+      this.changeRoute(path);
     }
   }
 
@@ -79,8 +87,17 @@ class HistoryRouter {
     }
   }
 
+  getPath() {
+    const fullPath = window.location.pathname;
+
+    return fullPath.startsWith(this.basePath)
+      ? fullPath.slice(this.basePath.length) || "/"
+      : fullPath;
+  }
+
   processRouteChange() {
-    const requestedPath = window.location.pathname;
+    const requestedPath = this.getPath();
+
     this.activeRoutePath = requestedPath;
 
     if (!this.hasAccessPermission(requestedPath)) {
@@ -97,7 +114,12 @@ class HistoryRouter {
   changeRoute(targetPath) {
     if (this.activeRoutePath === targetPath) return;
 
-    window.history.pushState({}, "", targetPath);
+    const fullPath = targetPath.startsWith("/")
+      ? `${this.basePath}${targetPath}`
+      : `${this.basePath}/${targetPath}`;
+
+    window.history.pushState({}, "", fullPath);
+
     this.processRouteChange();
   }
 }
