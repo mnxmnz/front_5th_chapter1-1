@@ -2,9 +2,9 @@ import {
   getLocalStorageItem,
   setLocalStorageItem,
   removeLocalStorageItem,
-} from "./storage.js";
+} from "../../utils/storage.js";
 
-import auth from "../store/auth.js";
+import auth from "./authStore.js";
 
 const LOCAL_STORAGE_KEY = "user";
 

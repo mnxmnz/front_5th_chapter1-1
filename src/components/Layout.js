@@ -1,4 +1,4 @@
-import { getIsLoggedIn } from "../utils/auth.js";
+import { getIsLoggedIn } from "../features/auth/authService.js";
 
 const Layout = (content) => {
   return `

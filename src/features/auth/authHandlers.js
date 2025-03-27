@@ -1,5 +1,8 @@
-import { setLocalStorageItem, removeLocalStorageItem } from "./storage.js";
-import auth from "../store/auth.js";
+import {
+  setLocalStorageItem,
+  removeLocalStorageItem,
+} from "../../utils/storage.js";
+import auth from "./authStore.js";
 
 function handleLogin(router) {
   const username = document.getElementById("username").value;

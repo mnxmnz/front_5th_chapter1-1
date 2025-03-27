@@ -1,4 +1,4 @@
-import auth from "../store/auth.js";
+import auth from "../features/auth/authStore.js";
 
 const ProfilePage = () => {
   const user = auth.getUserInfo();

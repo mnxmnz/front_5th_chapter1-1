@@ -5,8 +5,8 @@ import ProfilePage from "./pages/profile.js";
 import LoginPage from "./pages/login.js";
 import ErrorPage from "./pages/error.js";
 
-import HashRouter from "./utils/hashRouter.js";
-import { setupEventListeners } from "./utils/eventHandlers.js";
+import HashRouter from "./router/hashRouter.js";
+import { setupEventListeners } from "./features/auth/authHandlers.js";
 
 const routes = {
   "/": () => Layout(MainPage()),

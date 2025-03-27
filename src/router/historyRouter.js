@@ -1,5 +1,5 @@
-import auth from "../store/auth.js";
-import { restoreAuth } from "./auth.js";
+import auth from "../features/auth/authStore.js";
+import { restoreAuth } from "../features/auth/authService.js";
 
 class HistoryRouter {
   containerElement = null;
