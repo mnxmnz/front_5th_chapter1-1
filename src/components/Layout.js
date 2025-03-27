@@ -20,7 +20,14 @@ const Header = () => {
       return currentHashPath === path;
     }
 
-    return window.location.pathname === path;
+    const basePath =
+      process.env.NODE_ENV === "production" ? "/front_5th_chapter1-1" : "";
+    const fullPath = window.location.pathname;
+    const normalizedPath = fullPath.startsWith(basePath)
+      ? fullPath.slice(basePath.length) || "/"
+      : fullPath;
+
+    return normalizedPath === path;
   };
 
   return `
