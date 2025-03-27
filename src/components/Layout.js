@@ -1,5 +1,4 @@
-import { auth } from "../utils/auth.js";
-import { getCurrentPath } from "../utils/route.js";
+import { getIsLoggedIn } from "../utils/auth.js";
 
 const Layout = (content) => `
   <div class="bg-gray-100 min-h-screen flex justify-center">
@@ -8,8 +7,8 @@ const Layout = (content) => `
 `;
 
 const Header = () => {
-  const isLoggedIn = auth.isLoggedIn;
-  const currentPath = getCurrentPath();
+  const isLoggedIn = getIsLoggedIn();
+  const currentPath = window.location.pathname;
 
   return `
     <header class="bg-blue-600 text-white p-4 sticky top-0">

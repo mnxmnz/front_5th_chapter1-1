@@ -1,4 +1,4 @@
-const HomePage = () => `
+const MainPage = () => `
   <main class="p-4">
     <div class="mb-4 bg-white rounded-lg shadow p-4">
       <textarea
@@ -114,4 +114,4 @@ const HomePage = () => `
   </main>
 `;
 
-export default HomePage;
+export default MainPage;

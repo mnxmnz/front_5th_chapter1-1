@@ -1,13 +1,7 @@
-import { auth } from "../utils/auth.js";
-import { getCurrentPath, redirectToPath } from "../utils/route.js";
+import auth from "../store/auth.js";
 
 const ProfilePage = () => {
-  const user = auth.user;
-  const currentPath = getCurrentPath();
-
-  if (currentPath === "/profile" && !auth.isLoggedIn) {
-    redirectToPath("/login");
-  }
+  const user = auth.getUserInfo();
 
   return `
     <main class="p-4">
