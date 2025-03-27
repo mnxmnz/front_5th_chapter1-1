@@ -1,7 +1,7 @@
 import auth from "../store/auth.js";
-import { restoreAuth } from "../utils/auth.js";
+import { restoreAuth } from "./auth.js";
 
-class Router {
+class HistoryRouter {
   containerElement = null;
   routeMapping = {};
   protectedRoutes = ["/profile"];
@@ -102,4 +102,4 @@ class Router {
   }
 }
 
-export default Router;
+export default HistoryRouter;

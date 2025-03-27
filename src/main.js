@@ -5,7 +5,7 @@ import ProfilePage from "./pages/profile.js";
 import LoginPage from "./pages/login.js";
 import ErrorPage from "./pages/error.js";
 
-import Router from "./utils/route.js";
+import HistoryRouter from "./utils/historyRouter.js";
 import { setupEventListeners } from "./utils/eventHandlers.js";
 
 const routes = {
@@ -15,6 +15,6 @@ const routes = {
   "/error": () => ErrorPage(),
 };
 
-const router = new Router(routes);
+const router = new HistoryRouter(routes);
 
 setupEventListeners(router);
